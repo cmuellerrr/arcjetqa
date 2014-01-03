@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Arc Jet QA - Proof of Concept</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="task" id="task0">
+			<div class="tBar">
+				<ul>
+					<li><a class="copy"></a></li>
+					<li><a class="trash"></a></li>
+				</ul>
+			</div>
+			<div class="tContent">
+				<h2 class="tTitle empty" id="title0" contenteditable="true" data-ghost="Enter Task Title"></h2>
+				<div class="tSteps">
+					<div class="step" id="step0">
+						<div class="sBar">
+							<ul>
+								<li><a class="copy"></a></li>
+								<li><a class="trash"></a></li>
+							</ul>
+						</div>
+						<div class="sContent">
+							<div class="sLeft">
+								<p class="sText empty" id="text0" contenteditable="true" data-ghost="Enter step text"></p>
+							</div>
+							<div class="sRight">
+								<select name="sSignature" id="sig0">
+									<option value="-">-</option>
+									<option value="Verify">Verify</option>
+									<option value="Witness">Witness</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

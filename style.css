@@ -1,0 +1,110 @@
+body {
+	color: #555555;
+}
+
+.container {
+	padding-top: 100px;
+	position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+
+.task, .tTitle, .step, .sText {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #E4E4E4
+}
+
+.task, .step {
+	border-left-width: 5px;
+	border-radius: 2px;
+}
+
+.highlight {
+	border-color: #929292;
+}
+
+.task {
+	position: relative;
+	margin-top: 50px;
+	padding: 3px 10px 10px 10px;
+}
+
+.tBar, .sBar {
+	height: 20px;
+	width: 100%;
+}
+
+.tBar ul, .sBar ul {
+	margin: 0;
+	padding: 0;
+}
+
+.tBar ul li, .sBar ul li {
+	display: inline;
+	list-style: none;
+}
+
+.tBar ul li a, .sBar ul li a {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	background-size: 15px 15px;
+	background-repeat: no-repeat;
+}
+
+.copy {
+	background-image: url('img/copy.png');
+}
+
+.trash {
+	background-image: url('img/trash.png');
+}
+
+.tTitle {
+	font-family: Arial;
+	padding: 3px;
+	margin: 10px 0;
+}
+
+.step {
+	margin-top: 10px;
+	padding: 3px 10px 5px 10px;
+}
+
+.sLeft {
+	width: 460px;
+}
+
+.sRight {
+	vertical-align: top;
+}
+
+.sLeft, .sRight {
+	display: inline-block;
+}
+
+.sText {
+	padding: 3px;
+	margin: 5px 0 0 0;
+}
+
+.sRight select {
+	border: 0 !important;  /*Removes border*/
+    -webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none; /* Removes Default Firefox style*/
+    background: url('img/dropdown_arrow.png') no-repeat;  /*Adds background-image*/
+    background-position: 52px 6px;  /*Position of the background-image*/
+    width: 70px; /*Width of select dropdown to give space for arrow image*/
+    text-indent: 0.01px; /* Removes default arrow from firefox*/
+    text-overflow: "";  /*Removes default arrow from firefox*/
+    margin-left: 10px;
+    margin-top: 6px;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.empty:after {
+    content: attr(data-ghost);
+    color: #c0c0c0;
+}
