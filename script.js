@@ -6,9 +6,9 @@ $(document).ready(function() {
     $('#title0').focusout(handleGhostText);
 
     //$('#sig0').keydown(checkStepAdd);
-    $('.addBtn').click(addStep);
+    $('.addStepBtn').click(addStep);
 
-    $('.addBtn').click();
+    $('.addStepBtn').click();
     document.activeElement.blur();
 });
 
