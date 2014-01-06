@@ -4,12 +4,12 @@ var taskCount = 0,
 $(document).ready(function() {
     $('#title0').keypress(handleGhostText);
     $('#title0').focusout(handleGhostText);
-    $('#text0').keypress(handleGhostText);
-    $('#text0').focusout(handleGhostText);
-    $('#sig0').keydown(checkStepAdd);
 
-    //$('#step0').focusin(toggleHighlight);
-    //$('#step0').focusout(toggleHighlight);
+    //$('#sig0').keydown(checkStepAdd);
+    $('.addBtn').click(addStep);
+
+    $('.addBtn').click();
+    document.activeElement.blur();
 });
 
 
@@ -36,27 +36,12 @@ var handleGhostText = function(event) {
 
 var checkStepAdd = function(event) {
     var targetStepDiv = $(event.target).parent().parent().parent();
-    //console.log($('div.step', targetStepDiv.parent()).last());
-    //console.log(targetStepDiv);
-
 
     //If its a tab and not moving up the tree
     if (event.keyCode === 9 && !event.shiftKey) {
         //only add a step if you are currently focused on the last step
         if (targetStepDiv.get(0) === $('div.step', targetStepDiv.parent()).last().get(0)) {
-            console.log("ADDING STEP");
-
-            var newStep = createNewStep(++stepCount);
-
-            //Append to the steps container
-            targetStepDiv.parent().append(newStep);
-            
-            //newStep.focusin(toggleHighlight);
-            //newStep.focusout(toggleHighlight);
-
-            $('#text' + stepCount).focusout(checkDeleteStep);
-            $('#sig' + stepCount).keydown(checkStepAdd);
-            $('#text' + stepCount).focus();
+            addStep(targetStepDiv.parent());
 
             event.stopPropagation();
             return false;
@@ -64,14 +49,51 @@ var checkStepAdd = function(event) {
     }
 };
 
+//EXPECTING THE TARGET TO BE THE ADD BUTTON
+var addStep = function(event) {
+    console.log("ADDING STEP");
+
+    var newStep = createNewStep(++stepCount);
+
+    //Append to the steps container
+    var stepContainer = $(event.target).parent().prev().find('.tSteps');
+    stepContainer.append(newStep);
+
+    $('#text' + stepCount).focus();
+};
+
 //Check to see if you should delete an empty step
-var checkDeleteStep = function(event) {
+var checkStepDelete = function(event) {
     var target = $(event.target);
 
     if (target.text().length === 0) {
         console.log("DELETING STEP");
         target.parent().parent().parent().remove();
     }
+};
+
+//EXPECTING THE TARGET TO BE THE TRASH ANCHOR
+var removeStep = function(event) {
+    console.log("REMOVING STEP");
+    $(event.target).parent().parent().parent().parent().remove();
+};
+
+//EXPECTING THE TARGET TO BE THE COPY ANCHOR
+var copyStep = function(event) {
+    console.log("COPYING STEP");
+
+    var targetStep = $(event.target).parent().parent().parent().parent();
+    var newStep = targetStep.clone(true, true);
+
+    //Change all of the ids
+    stepCount++;
+    newStep.attr('id', 'step' + stepCount);
+    newStep.find('.sText').attr('id', 'text' + stepCount);
+    newStep.find('.sSignature').attr('id', 'sig' + stepCount);
+
+    targetStep.after(newStep);
+
+    $('#text' + stepCount).focus();
 };
 
 //Create a new step element
@@ -81,6 +103,8 @@ var createNewStep = function(idNum) {
         "class": "step",
         id: "step" + idNum,
     });
+    //step.focusin(toggleHighlight);
+    //step.focusout(toggleHighlight);
 
     var content = $(document.createElement("div"));
     content.attr("class", "sContent");
@@ -93,8 +117,11 @@ var createNewStep = function(idNum) {
         "class": "sText",
         id: "text" + idNum,
         contenteditable: "true",
-        "data-ghost": "Step text"
+        "data-ghost": "Enter step text"
     });
+    //text.focusout(checkStepDelete);
+    text.keypress(handleGhostText);
+    text.focusout(handleGhostText);
 
     var right = $(document.createElement("div"));
     right.attr("class", "sRight");
@@ -104,6 +131,7 @@ var createNewStep = function(idNum) {
         "name": "sSignature",
         id: "sig" + idNum
     });
+    //signature.keydown(checkStepAdd);
 
     signature.append($("<option />", {value: "-", text: "-"}));
     signature.append($("<option />", {value: "Verify", text: "Verify"}));
@@ -132,9 +160,11 @@ var createNewBar = function() {
 
     var copyLi = $(document.createElement("li"));
     copyLi.append($("<a />", {"class": "copy"}));
+    copyLi.click(copyStep);
 
     var trashLi = $(document.createElement("li"));
     trashLi.append($("<a />", {"class": "trash"}));
+    trashLi.click(removeStep);
 
     list.append(copyLi);
     list.append(trashLi);
