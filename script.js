@@ -10,6 +10,9 @@ $(document).ready(function() {
 
     $('.addStepBtn').click();
     document.activeElement.blur();
+
+    jwerty.key('ctrl+v', false);
+    jwerty.key('ctrl+v', selectVariable);
 });
 
 
@@ -176,4 +179,56 @@ var createNewBar = function() {
 
 var toggleHighlight = function(event) {
     $(event.target).parent().parent().parent().toggleClass("highlight");
+};
+
+//Select a variable to instert
+var selectVariable = function() {
+    var name = "VARIABLE";
+        
+    //show a popup
+    //insert the selected value
+
+    insertVariable(name);
+};
+
+//Select a variable to modify the replace the one selected
+var modifyVariable = function() {
+    alert("You are changing a variable");
+};
+
+//Instert a variable with the given name
+var insertVariable = function(name) {
+    var variable = $(document.createElement("span"));
+    variable.attr({
+        "class": "variable",
+        contenteditable: "false"
+    });
+    variable.append(name);
+    variable.click(modifyVariable);
+
+    insertNodeAtCursor(variable[0]);
+};
+
+//Actually do the insertion of the given element at the current cursor position
+var insertNodeAtCursor = function(newNode) {
+    var sel, range, html;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = window.getSelection().getRangeAt(0);
+            range.collapse(false);
+            
+            range.insertNode(newNode);
+
+            range.setEndAfter(newNode);
+            range.collapse(false);
+            sel.removeAllRanges();
+            sel.addRange(range);
+        }
+    } else if (document.selection && document.selection.createRange) {
+        range = document.selection.createRange();
+        range.collapse(false);
+        html = (newNode.nodeType == 3) ? newNode.data : newNode.outerHTML;
+        range.pasteHTML(html);
+    }
 };
