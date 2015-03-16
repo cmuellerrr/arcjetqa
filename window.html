@@ -301,25 +301,23 @@
                 <div class="content">
                     <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
                     <div class="step-data">
-                        <div class="window">
-                            <div class="fields">
-                                <div class="field">
-                                    <p class="label">Start Time:</p>
-                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
-                                </div>
-                                <div class="field">
-                                    <p class="label">End Time:</p>
-                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
-                                </div>
-                            </div>
+                        <div class="field">
+                            <p class="label">Start Time:</p>
+                            <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
+                        </div>
+                        <div class="field">
+                            <p class="label">End Time:</p>
+                            <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
+                        </div>
+                        <div class="field inline">
+                            <p class="label">Time Remaining:</p>
+                            <input type="text" class="value time" value="0:12:25" readonly>
+                        </div>
 
-                            <div class="counter">
-                                <p class="label">Remaining</p>
-                                <div class="time">0:12:25</div>
-                            </div>
-
-                            <div class="counter-stop">
-                                <button class="stop" id="btn-1">Stop</button>
+                        <div class="counter-stop">
+                            <div class="slide-wrapper ui-widget-content" id="slide-2">
+                                <div class="slide-handle button" id="slide-handle-2">&#10145;</div>
+                                <span class="slide-text">Slide to stop</span>
                             </div>
                         </div>
                     </div>
@@ -350,65 +348,9 @@
                 </div>
             </div>
         </div>
+
 
         <h2>Option 2</h2>
-
-        <div class="group">
-            <p class="title">A. West Side Instrumentation Setup</p>
-            <div class="step">
-                <div class="content">
-                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
-                    <div class="step-data">
-                        <div class="window">
-                            <div class="fields">
-                                <div class="field">
-                                    <p class="label">Start Time:</p>
-                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
-                                </div>
-                                <div class="field">
-                                    <p class="label">End Time:</p>
-                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
-                                </div>
-                            </div>
-
-                            <div class="counter">
-                                <p class="label">Remaining</p>
-                                <div class="time">0:12:25</div>
-                            </div>
-                            <div class="counter-stop">
-                                <button class="stop" id="btn-3">Stop</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="signatures">
-                    <div class="signature signed">
-                        <p class="label">Completed by:</p>
-                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." readonly>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="content">
-                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
-                    <div class="step-data">
-                        <div class="field">
-                            <p class="label">Gate Valve Open Time:</p>
-                            <input type="text" class="value" placeholder="Enter value">
-                        </div>
-                    </div>
-                </div>
-                <div class="signatures">
-                    <div class="signature">
-                        <p class="label">Completed by:</p>
-                        <input type="text" class="value" placeholder="Enter PIN">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2>Option 3</h2>
 
         <div class="group">
             <p class="title">A. West Side Instrumentation Setup</p>
@@ -469,6 +411,64 @@
             </div>
         </div>
 
+        <h2>Option 3</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
+                                </div>
+                            </div>
+
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+
+                            <div class="counter-stop">
+                                <button class="stop" id="btn-1">Stop</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <h2>Option 4</h2>
 
         <div class="group">
@@ -477,23 +477,24 @@
                 <div class="content">
                     <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
                     <div class="step-data">
-                        <div class="field">
-                            <p class="label">Start Time:</p>
-                            <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
-                        </div>
-                        <div class="field">
-                            <p class="label">End Time:</p>
-                            <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
-                        </div>
-                        <div class="field inline">
-                            <p class="label">Remaining:</p>
-                            <input type="text" class="value time" value="0:12:25" readonly>
-                        </div>
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" readonly>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" readonly>
+                                </div>
+                            </div>
 
-                        <div class="counter-stop">
-                            <div class="slide-wrapper ui-widget-content" id="slide-2">
-                                <div class="slide-handle button" id="slide-handle-2">&#10145;</div>
-                                <span class="slide-text">Slide to stop</span>
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+                            <div class="counter-stop">
+                                <button class="stop" id="btn-3">Stop</button>
                             </div>
                         </div>
                     </div>
