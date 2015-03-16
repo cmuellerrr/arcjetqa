@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		*, *:before, *:after {
+    		-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			-o-box-sizing: border-box;
+			box-sizing: border-box; 
+		}
+
+		body {
+			background: whitesmoke;
+			height: 2000px;
+			margin: 0;
+		}
+
+		h1, ul {
+			margin: 0;
+		}
+
+		.header {
+			height: 80px;
+			background: #999;
+			text-align: center;
+		}
+
+		#navbar {
+			width: 100%;
+			height: 25px;
+			padding: 3px;
+			background: red;
+		}
+
+		nav {
+			float: right;
+		}
+
+		nav ul li {
+			display: inline;
+		}
+
+		nav ul li:not(:last-child):after {
+			content: " | ";
+		}
+
+		.fixed {
+			position: fixed !important;
+			z-index: 1070;
+			top: 0;
+		}
+
+		.content {
+			padding-top: 200px;
+			text-align: center;
+		}
+	</style>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		window.onload = function () {
+			//Check the scroll position on every scroll event
+			//If we've scrolled past the original position, give it
+			//the cuson .fixed class. If not, remove it.
+		    var navPosition = $('#navbar').position().top;
+		    $(window).scroll(function() {
+		    	if($(window).scrollTop() >= navPosition) {
+		    		$('#navbar').addClass("fixed")
+		    	} else {
+		    		$('#navbar').removeClass("fixed");
+		    	}
+		    })
+		};
+	</script>
+</head>
+<body>
+	<header class="header">
+		<h1>TITLE</h1>
+	</header>
+
+	<div id="navbar">
+		<nav>
+			<ul>
+				<li><a>Item 1</a></li>
+				<li><a>Item 2</a></li>
+				<li><a>Item 3</a></li>
+				<li><a>Item 4</a></li>
+			</ul>
+		</nav>
+	</div>
+	
+	<div class="content">
+		<p>Scroll Down</p>
+	</div>	
+</body>
+</html>
+
+
+
+
+
+
+

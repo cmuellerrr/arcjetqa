@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<head>
+	<title>Testing things</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script src='https://code.jquery.com/jquery-1.10.2.js'></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <script>
+        $(document).ready(function () {
+            $('button.stop').click(function (event) {
+                var btn = $(event.target),
+                    txt = btn.html();
+
+                btn.removeClass("stop");
+                btn.addClass("confirm");
+                btn.html("Confirm");
+                btn.attr("disabled", "disabled");
+
+                setTimeout(function () {
+                    btn.removeClass("confirm");
+                    btn.addClass("stop");
+                    btn.html(txt);
+                    btn.removeAttr("disabled", "disabled");
+                }, 3000);
+            });
+
+            $("#slide-handle").draggable({
+                containment: "parent",
+                stop: function () {
+                    var handle = $('#slide-handle');
+
+                    //didn't make it close enough to the end
+                    if (parseFloat(handle.css("left"), 10) < 300) {
+                        handle.css("left", "0px");
+
+                    //close enough
+                    } else {
+                        handle.css("left", "313px");
+                    }
+                }
+            });
+
+            $("#slide-handle-2").draggable({
+                containment: "parent",
+                stop: function () {
+                    var handle = $('#slide-handle-2');
+
+                    //didn't make it close enough to the end
+                    if (parseFloat(handle.css("left"), 10) < 100) {
+                        handle.css("left", "0px");
+
+                    //close enough
+                    } else {
+                        handle.css("left", "113px");
+                    }
+                }
+            });
+        });
+    </script>
+    <style>
+
+        * {
+          -webkit-box-sizing: border-box; /* Safari 3.0 - 5.0, Chrome 1 - 9, Android 2.1 - 3.x */
+          -moz-box-sizing: border-box;    /* Firefox 1 - 28 */
+          box-sizing: border-box;         /* Safari 5.1+, Chrome 10+, Firefox 29+, Opera 7+, IE 8+, Android 4.0+, iOS any */
+        }
+
+        body {
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            color: #373737;
+            background: #f1f1f1;
+        }
+
+        .inline {
+            display: inline-block;
+        }
+
+        .block {
+            display: block;
+        }
+
+        button,
+        .button {
+            border: none;
+            background: #0070A9;
+            box-shadow: 0 2px 0 0 #064D81;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            padding: 6px 10px;
+            font-size: 14px;
+
+            -webkit-transition: all .1s ease;
+            -moz-transition: all .1s ease;
+            -o-transition: all .1s ease;
+            transition: all .1s ease;
+        }
+
+        button:focus,
+        button:active {
+            outline: none;
+        }
+
+
+        .group {
+            width: 730px;
+            margin: 50px auto;
+            padding: 15px;
+            background: white;
+            box-shadow: 0 1px 0 1px #c0c0c0;
+            border-radius: 2px;
+            border-top: 5px solid #c0c0c0;
+        }
+
+        .group .title {
+            margin: 0 0 20px;
+            font-size: 18px;
+        }
+
+        .step {
+            padding: 10px 5px;
+            margin-bottom: 10px;
+            border-top: 2px solid #c0c0c0;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step .content,
+        .setp .signatures {
+            display: inline-block
+        }
+
+        .step .content {
+            width: 65%;
+        }
+
+        .step .signatures {
+            float: right;
+        }
+
+        .step .content .description {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .step-data {
+            margin-top: 15px;
+        }
+
+        .signature,
+        .field {
+            margin-bottom: 10px;
+        }
+
+        .signature .label,
+        .signature .value,
+        .field .label,
+        .field .value {
+            display: inline-block;
+        }
+
+        .signature .label,
+        .field .label {
+            width: 155px;
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .signature .value,
+        .field .value {
+            width: 110px;
+            height: 30px;
+            font-size: 14px;
+        }
+
+        .signature .label {
+            width: 100px;
+        }
+
+        .signature .value {
+            text-align: center;
+        }
+
+        .signature.signed .value {
+            background: #3AD575;
+            color: white;
+            border: none;
+        }
+
+        .window .fields,
+        .counter,
+        .counter-stop {
+            display: inline-block;
+        }
+
+        .counter {
+            margin-left: 10px;
+        }
+
+        .counter .time,
+        .counter button {
+            display: inline-block;
+        }
+
+        .counter .label {
+            margin: 0 0 3px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .counter .time {
+            width: 80px;
+            height: 30px;
+            margin-right: 5px;
+            padding-top: 6px;
+        }
+
+        .time {
+            background: #DF4E31;
+            color: white;
+            text-align: center;
+            border: none;
+        }
+
+        .stop {
+            width: 55px;
+        }
+
+        .confirm {
+            width: 75px;
+            background: #DF4E31;
+            box-shadow: 0 2px 0 0 #B94129;
+        }
+
+        #btn-2.stop {
+            background: #c0c0c0;
+            box-shadow: 0 2px 0 0 #919191;
+        }
+
+        #btn-3.stop {
+            background: #DF4E31;
+            box-shadow: 0 2px 0 0 #B94129;
+        }
+
+        .slide-wrapper {
+            border: 1px solid #c0c0c0;
+            border-radius: 5px;
+            width: 365px;
+            padding-bottom: 2px;
+        }
+
+        .slide-handle {
+            display: inline-block;
+            width: 50px;
+            font-size: 16px;
+
+            -webkit-transition: none;
+            -moz-transition: none;
+            -o-transition: none;
+            transition: none;
+        }
+
+        .slide-text {
+            margin-left: 10px;
+            color: #c0c0c0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #slide-2 {
+            width: 165px;
+        }
+
+        #slide-2 .slide-text {
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Option 1</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" disabled>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" disabled>
+                                </div>
+                            </div>
+
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+
+                            <div class="counter-stop">
+                                <button class="stop" id="btn-1">Stop</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 2</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" disabled>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" disabled>
+                                </div>
+                            </div>
+
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+
+                            <div class="counter-stop">
+                                <button class="stop" id="btn-2">Stop</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 3</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" disabled>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" disabled>
+                                </div>
+                            </div>
+
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+                            <div class="counter-stop">
+                                <button class="stop" id="btn-3">Stop</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 4</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="window">
+                            <div class="fields">
+                                <div class="field">
+                                    <p class="label">Start Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="2:53 PM" disabled>
+                                </div>
+                                <div class="field">
+                                    <p class="label">End Time:</p>
+                                    <input type="text" class="value" placeholder="Enter value" value="3:53 PM" disabled>
+                                </div>
+                            </div>
+
+                            <div class="counter">
+                                <p class="label">Remaining</p>
+                                <div class="time">0:12:25</div>
+                            </div>
+
+                            <div class="counter-stop block">
+                                <div class="slide-wrapper ui-widget-content">
+                                    <div class="slide-handle button" id="slide-handle">&#10145;</div>
+                                    <span class="slide-text">Slide to stop</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Option 5</h2>
+
+        <div class="group">
+            <p class="title">A. West Side Instrumentation Setup</p>
+            <div class="step">
+                <div class="content">
+                    <p class="description">1. Polish Swing Arm's 102mm FF slug calorimeter (S/N FF102-08-120814-01).</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Start Time:</p>
+                            <input type="text" class="value" placeholder="Enter value" value="2:53 PM" disabled>
+                        </div>
+                        <div class="field">
+                            <p class="label">End Time:</p>
+                            <input type="text" class="value" placeholder="Enter value" value="3:53 PM" disabled>
+                        </div>
+                        <div class="field inline">
+                            <p class="label">Remaining:</p>
+                            <input type="text" class="value time" value="0:12:25" disabled>
+                        </div>
+
+                        <div class="counter-stop">
+                            <div class="slide-wrapper ui-widget-content" id="slide-2">
+                                <div class="slide-handle button" id="slide-handle-2">&#10145;</div>
+                                <span class="slide-text">Slide to stop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature signed">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN" value="Christian M." disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="content">
+                    <p class="description">2. Record Vacuum Gate Valve open time to ensure one hour limit on polished calorimeters.</p>
+                    <div class="step-data">
+                        <div class="field">
+                            <p class="label">Gate Valve Open Time:</p>
+                            <input type="text" class="value" placeholder="Enter value">
+                        </div>
+                    </div>
+                </div>
+                <div class="signatures">
+                    <div class="signature">
+                        <p class="label">Completed by:</p>
+                        <input type="text" class="value" placeholder="Enter PIN">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
