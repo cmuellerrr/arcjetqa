@@ -39,7 +39,7 @@
 
                     //close enough
                     } else {
-                        handle.css("left", "308px");
+                        handle.css("left", "306px");
                     }
                 }
             });
@@ -55,7 +55,7 @@
 
                     //close enough
                     } else {
-                        handle.css("left", "113px");
+                        handle.css("left", "111px");
                     }
                 }
             });
@@ -255,16 +255,20 @@
         }
 
         .slide-wrapper {
-            border: 1px solid #c0c0c0;
-            border-radius: 5px;
             width: 360px;
             padding-bottom: 2px;
+
+            background: #f0f0f0;
+            border: 2px solid #c0c0c0;
+            border-radius: 5px;
+            border-style: inset;
         }
 
         .slide-handle {
             display: inline-block;
             width: 50px;
             font-size: 16px;
+            border-radius: 3px;
 
             -webkit-transition: none;
             -moz-transition: none;
@@ -273,9 +277,10 @@
         }
 
         .slide-text {
-            margin-left: 10px;
-            color: #c0c0c0;
-            font-size: 18px;
+            vertical-align: middle;
+            margin-left: 5px;
+            color: #919191;
+            font-size: 16px;
             font-weight: bold;
         }
 
